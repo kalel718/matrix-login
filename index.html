@@ -1,0 +1,46 @@
+<!--
+WHY: This is the skeleton of our Matrix-inspired login page.
+We want the canvas (Matrix rain) to be the first thing loaded,
+so it sits behind everything else. The login box comes after,
+so it floats above the rain like a glass panel. 🟩🟩🟩
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Glass Login</title>
+  <!-- WHY: Tailwind for quick, modern utility classes. No more boring CSS resets! 🚀 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- WHY: Inter font = clean, modern, and easy on the eyes. 👀 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- WHY: Our custom styles for glass and layout magic. ✨ -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- WHY: This canvas is our Matrix rain. It’s the digital world, always running in the background. 🌧️🟩 -->
+    <canvas id="matrixCanvas"></canvas>
+    <!-- WHY: Optional overlay to add a subtle darkening, making the login pop. Can be tweaked or removed! 🌓 -->
+    <div class="background-overlay"></div>
+    <!-- WHY: The star of the show! This is our glassy login box, floating above the code rain. 🪟 -->
+    <div class="login-container">
+        <h1>Welcome Back</h1>
+        <p>Login to your account</p>
+        <form>
+            <div class="input-group">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" placeholder="Enter your username or email">
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password">
+            </div>
+            <button type="submit">Login</button>
+            <p class="forgot-password">Forgot Password?</p>
+        </form>
+    </div>
+    <!-- WHY: Our Matrix rain engine! Loads last so the page feels snappy. 🖥️ -->
+    <script src="script.js"></script>
+</body>
+</html>

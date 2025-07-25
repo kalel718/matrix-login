@@ -1,0 +1,165 @@
+/*
+WHY: We want a full-screen, flexbox-centered layout so the login box is always perfectly centered,
+no matter the device. Flexbox is the easiest way to do this in 2025! 🤸‍♂️
+*/
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+    color: #e5e7eb;
+}
+
+/*
+WHY: The Matrix rain should always be behind everything,
+so we use fixed positioning and a low z-index.
+Pointer-events: none means you can’t accidentally click it! 🟩
+*/
+#matrixCanvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/*
+WHY: This overlay adds a subtle darkening to the background,
+making the glass login box easier to read.
+Tweak the opacity for more/less drama! 🎭
+*/
+.background-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: radial-gradient(circle at center, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+/*
+WHY: Glassmorphism!
+A semi-transparent background, blur, and a neon border make this look like a frosted glass panel.
+Lower opacity and blur so the Matrix rain shines through. 🪟✨
+*/
+.login-container {
+    background: rgba(30, 41, 59, 0.12);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), 0 0 60px 10px #00fff7;
+    border: 1.5px solid rgba(0, 255, 255, 0.18);
+    backdrop-filter: blur(6px) saturate(180%);
+    -webkit-backdrop-filter: blur(6px) saturate(180%);
+    max-width: 28rem;
+    width: 100%;
+    text-align: center;
+    padding: 2.5rem;
+    z-index: 10;
+    animation: pulse-glow 3s ease-in-out infinite alternate;
+}
+
+/*
+WHY: A little glow animation for that cyberpunk vibe.
+It’s subtle, but it makes the login feel alive! 💡
+*/
+@keyframes pulse-glow {
+    0% {
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.4),
+                    0 0 100px rgba(0, 255, 255, 0.2),
+                    inset 0 0 20px rgba(0, 255, 255, 0.1);
+    }
+    100% {
+        box-shadow: 0 0 70px rgba(0, 255, 255, 0.6),
+                    0 0 140px rgba(0, 255, 255, 0.3),
+                    inset 0 0 30px rgba(0, 255, 255, 0.15);
+    }
+}
+
+/* WHY: Typography and spacing for a clean, readable login. 📝 */
+h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: white;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.8),
+                 0 0 20px rgba(0, 255, 255, 0.4);
+}
+p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #a5f3fc;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.input-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #a5f3fc;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+.input-group input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.8) 0%, rgba(55, 65, 81, 0.8) 100%);
+    border: 2px solid #4b5563;
+    color: white;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.input-group input::placeholder {
+    color: #9ca3af;
+}
+.input-group input:focus {
+    border-color: #22d3ee;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                0 0 15px rgba(0, 255, 255, 0.3),
+                0 0 0 4px rgba(34, 211, 238, 0.1);
+}
+button[type="submit"] {
+    width: 100%;
+    background: linear-gradient(to right, #0891b2, #2563eb);
+    color: white;
+    font-weight: 700;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3),
+                0 0 20px rgba(0, 255, 255, 0.2);
+    transform: scale(1);
+}
+button[type="submit"]:hover {
+    background: linear-gradient(to right, #0e7490, #1d4ed8);
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4),
+                0 0 30px rgba(0, 255, 255, 0.3);
+}
+button[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.4),
+                0 0 30px rgba(0, 255, 255, 0.3),
+                0 0 0 4px rgba(34, 211, 238, 0.5);
+}
+.forgot-password {
+    font-size: 0.875rem;
+    margin-top: 1.5rem;
+    color: #67e8f9;
+    cursor: pointer;
+    transition: color 0.2s;
+    text-shadow: 0 0 5px rgba(0, 255, 255, 0.3);
+}
+.forgot-password:hover {
+    color: #a5f3fc;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+}
